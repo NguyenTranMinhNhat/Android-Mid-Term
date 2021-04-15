@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Android Mid-Term</string>
+    <string name="app_name">Quản lý âm nhạc</string>
+    <string name="back">&lt; Back</string>
 </resources>
