@@ -18,6 +18,7 @@ public class EditArtist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_artist);
+        Database db = new Database(this);
         setControl();
         setEvent();
     }

@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidMidTerm">
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".CreateArtist" />
-        <activity android:name=".EditArtist">
+        <activity android:name=".CreateArtist">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

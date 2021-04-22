@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Quản lý âm nhạc</string>
     <string name="back">&lt; Back</string>
+    <string name="v_name_artist">Name</string>
+    <string name="v_song_list">Song list</string>
+    <string name="input_song">Song name, year</string>
 </resources>

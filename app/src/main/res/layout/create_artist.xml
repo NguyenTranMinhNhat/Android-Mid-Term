@@ -6,12 +6,14 @@
     android:paddingRight="20dp"
     android:paddingLeft="20dp"
     android:paddingTop="10dp"
-    android:paddingBottom="40dp">
+    android:paddingBottom="40dp"
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <TextView
             android:id="@+id/btn_back"
@@ -20,7 +22,8 @@
             android:layout_gravity="center"
             android:fontFamily="sans-serif-black"
             android:text="@string/back"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,6 +31,7 @@
             android:gravity="right"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/save"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:gravity="right"
@@ -41,12 +45,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="30dp">
+
         <ImageView
             android:id="@+id/img_artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/image_blank"
+            android:background="@drawable/image_blank"
             android:layout_gravity="center"
+            android:clickable="true"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,17 +62,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@string/v_name_artist"
                 android:textSize="25dp"
+                android:textColor="@color/black"
                 android:fontFamily="sans-serif-black"
                 />
             <EditText
                 android:id="@+id/txt_artist_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
+                android:hint="@string/v_name_artist"
                 android:textSize="25dp"
                 android:padding="10dp"
+                android:textColor="@color/black"
                 android:background="@drawable/border_edittext"
                 android:layout_marginLeft="10dp"
                 />
@@ -80,19 +88,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Songs list"
+            android:text="@string/v_song_list"
             android:textSize="25dp"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-black"
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp"/>
         <EditText
             android:id="@+id/txt_song_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="top"
-            android:hint="Song name, year"
+            android:hint="@string/input_song"
             android:padding="10dp"
             android:textSize="25dp"
+            android:textColor="@color/black"
             android:background="@drawable/border_edittext"
             />
     </LinearLayout>
