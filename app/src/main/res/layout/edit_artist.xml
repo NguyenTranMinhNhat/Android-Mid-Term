@@ -6,7 +6,8 @@
     android:paddingLeft="20dp"
     android:paddingTop="10dp"
     android:paddingRight="20dp"
-    android:paddingBottom="40dp">
+    android:paddingBottom="40dp"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,7 +63,8 @@
             android:background="@drawable/border_edittext"
             android:padding="7dp"
             android:text="Trịnh Thăng Bình"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
     <LinearLayout
@@ -78,16 +80,19 @@
             android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif-black"
             android:text="@string/v_song_list"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:textColor="@color/black"/>
 
         <EditText
-            android:id="@+id/txt_song_list"
+            android:id="@+id/txt_song_list_edit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/border_edittext"
             android:gravity="top"
             android:hint="@string/input_song"
             android:padding="10dp"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"/>
     </LinearLayout>
 </LinearLayout>

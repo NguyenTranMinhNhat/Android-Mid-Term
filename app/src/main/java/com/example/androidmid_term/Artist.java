@@ -1,7 +1,5 @@
 package com.example.androidmid_term;
 
-import android.graphics.Bitmap;
-
 public class Artist {
     private int id;
     private String name;
