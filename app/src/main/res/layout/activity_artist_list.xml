@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Artitst_info"
+    tools:context=".Artist_info"
     android:orientation="vertical"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp">
@@ -29,13 +29,14 @@
     <GridView
         android:id="@+id/list_artist"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="419dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:columnWidth="20dp"
         android:horizontalSpacing="10dp"
         android:numColumns="2"
-        android:verticalSpacing="10dp" />
+        android:verticalSpacing="10dp"
+        />
 
     <Button
         android:id="@+id/btn_add"

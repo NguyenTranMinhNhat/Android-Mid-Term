@@ -2,9 +2,12 @@ package com.example.quanlyamnhac;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.GridView;
+import android.widget.Toast;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 
 public class Artist_list extends AppCompatActivity {
@@ -27,31 +30,26 @@ public class Artist_list extends AppCompatActivity {
 
     private void setEvent() {
         khoitao();
-        ArrayAdapter_Artist adapter = new ArrayAdapter_Artist(this, R.layout.activity_artis_list_item,data);
+        ArrayAdapter_Artist_list adapter = new ArrayAdapter_Artist_list(this, R.layout.activity_artis_list_item,data);
         list_artist.setAdapter(adapter);
+
+
     }
 
     private void khoitao() {
         data = new ArrayList<>();
-        Artist art1 = new Artist();
-        art1.setAvatar(R.drawable.troll);
-        art1.setName("Troll");
-        data.add(art1);
+        Database db = new Database(this);
 
-        Artist art2 = new Artist();
-        art2.setAvatar(R.drawable.why_u_n);
-        art2.setName("Why");
-        data.add(art2);
+        Cursor dataCV = db.getData("SELECT TENCS, IMG FROM CASI");
+        while (dataCV.moveToNext()) {
+            String tenCS = dataCV.getString(0);
+            byte[] avatar = dataCV.getBlob(1);
+            Artist art = new Artist();
+            art.setName(tenCS);
+            art.setAvatar(R.drawable.troll);
+            data.add(art);
+        }
 
-        Artist art3 = new Artist();
-        art3.setAvatar(R.drawable.not_bad);
-        art3.setName("Obama");
-        data.add(art3);
-
-        Artist art4 = new Artist();
-        art4.setAvatar(R.drawable.trinh_thang_binh_avt);
-        art4.setName("Trịnh Thằng Bình");
-        data.add(art4);
 
     }
 }

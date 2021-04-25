@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyAmNhac">
-        <activity android:name=".Artis_list_item"></activity>
-        <activity android:name=".Artitst_info" />
-        <activity android:name=".Artist_list">
+        <activity android:name=".Artist_info">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
