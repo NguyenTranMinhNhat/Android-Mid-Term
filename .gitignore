@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+app/src/main/res/values/styles.xml
+app/src/main/res/layout/activity_table.xml
+app/src/main/java/com/example/androidmid_term/Table.java
