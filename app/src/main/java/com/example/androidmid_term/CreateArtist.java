@@ -17,6 +17,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -33,6 +34,7 @@ public class CreateArtist extends AppCompatActivity {
     int REQUEST_CODE_FOLDER = 10;
     ImageView img_artist;
     ImageView save;
+    TextView back;
     EditText txt_name_artist;
     EditText txt_song_list;
     Database_Artist database;
@@ -84,6 +86,7 @@ public class CreateArtist extends AppCompatActivity {
         save = findViewById(R.id.save);
         txt_name_artist = findViewById(R.id.txt_artist_name);
         txt_song_list = findViewById(R.id.txt_song_list);
+        back = findViewById(R.id.btn_back);
     }
 
     private void setEvent() {
@@ -113,6 +116,13 @@ public class CreateArtist extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast.makeText(CreateArtist.this, "ERORR", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreateArtist.this,Artist_list.class));
             }
         });
     }
