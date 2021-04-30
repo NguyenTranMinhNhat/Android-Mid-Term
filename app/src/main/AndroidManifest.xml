@@ -9,11 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidMidTerm">
-        <activity android:name=".EditArtist">
+        <activity android:name=".ArrayAdapter_Songlist_edit"></activity>
+        <activity android:name=".EditSongList" />
+        <activity android:name=".Artist_list">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Artist_info" />
+        <activity android:name=".CreateArtist" />
+        <activity android:name=".EditArtist" />
     </application>
+
 </manifest>

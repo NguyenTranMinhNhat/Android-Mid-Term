@@ -84,12 +84,28 @@ public class Database_Artist extends SQLiteOpenHelper {
 
         Cursor c = database.rawQuery(sql,null);
         while (c.moveToNext()) {
+            art.setId(c.getInt(0));
             art.setName(c.getString(1));
             art.setImg(c.getBlob(2));
         }
         return art;
     }
+    public ArrayList get_artist_list(){
+        ArrayList <Artist> arr_artist = new ArrayList<>();
+        SQLiteDatabase database = getReadableDatabase();
+        String sql = "SELECT * FROM CASI";
 
+        Cursor c = database.rawQuery(sql,null);
+        while (c.moveToNext()){
+            Artist art = new Artist();
+            art.setId(c.getInt(0));
+            art.setName(c.getString(1));
+            art.setImg(c.getBlob(2));
+            arr_artist.add(art);
+        }
+
+        return arr_artist;
+    }
     public ArrayList get_song(int id){
         ArrayList <Song> arr_song = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
@@ -98,14 +114,58 @@ public class Database_Artist extends SQLiteOpenHelper {
         Cursor c = database.rawQuery(sql,null);
         while (c.moveToNext()){
             Song song = new Song();
+            song.setId(c.getInt(0));
             song.setName(c.getString(1));
             song.setYear(c.getString(2));
             arr_song.add(song);
         }
         return arr_song;
     }
-    public void del_song(int id){
-        String sql = "DELETE FROM BAIHAT WHERE MACS = "+id+" ";
+    public int get_song_id_by_name(String name){
+        String sql = "SELECT MABH FROM BAIHAT WHERE TENBH = '"+name+"'";
+        Cursor c = getData(sql);
+
+        int id=0;
+        while (c.moveToNext()){
+            id = c.getInt(0);
+        }
+        return id;
+    }
+
+    public void update_song_by_id(Song song){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "UPDATE BAIHAT SET NAMST = ? WHERE MABH = "+song.getId()+"";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1,song.getYear());
+
+        statement.executeInsert();
+    }
+
+    public void del_perform_info_by_song_id(int id){
+        String sql ="DELETE FROM THONGTINBIEUDIEN WHERE MABH = "+id+"";
+        QuerryData(sql);
+    }
+
+    public void del_song_by_id(int id){
+        String sql = "DELETE FROM BAIHAT WHERE MABH = "+id+"";
+        QuerryData(sql);
+    }
+
+    public void del_perform_info_by_artist_id(int id){
+        String sql ="DELETE FROM THONGTINBIEUDIEN WHERE MACS = "+id+"";
+        QuerryData(sql);
+    }
+
+    public void del_song_by_artist_id(int id){
+        String sql = "DELETE FROM BAIHAT WHERE MACS = "+id+"";
+        QuerryData(sql);
+    }
+
+    public void del_artist_by_id(int id){
+        String sql = "DELETE FROM CASI WHERE MACS = "+id+"";
         QuerryData(sql);
     }
     @Override
