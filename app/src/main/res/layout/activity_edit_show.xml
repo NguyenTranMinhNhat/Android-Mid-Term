@@ -76,17 +76,12 @@
             android:textSize="25dp"
             android:textColor="@color/black"/>
 
-        <EditText
-            android:id="@+id/et_danhmuc_es"
+        <ListView
+            android:id="@+id/info_Show"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
             android:background="@drawable/border_editext"
-            android:gravity="top"
-            android:hint="song name;datetime;location"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:padding="10dp"/>
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 
