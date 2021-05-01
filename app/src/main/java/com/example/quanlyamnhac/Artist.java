@@ -1,22 +1,22 @@
 package com.example.quanlyamnhac;
 
 public class Artist {
-    private int avatar;
+    private byte[] avatar;
     private String name;
 
     public Artist() {
     }
 
-    public Artist(int avatar, String name) {
+    public Artist(byte[] avatar, String name) {
         this.avatar = avatar;
         this.name = name;
     }
 
-    public int getAvatar() {
+    public byte[] getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
     }
 

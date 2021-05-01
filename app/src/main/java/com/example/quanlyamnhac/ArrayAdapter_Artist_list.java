@@ -1,6 +1,8 @@
 package com.example.quanlyamnhac;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +46,19 @@ public class ArrayAdapter_Artist_list extends ArrayAdapter<Artist> {
         TextView name = convertView.findViewById(R.id.name);
 
         Artist art = data.get(position);
-        avatar.setImageResource(art.getAvatar());
+        if(art.getAvatar() == null)
+            avatar.setImageResource(R.drawable.blank_img);
+        else
+            avatar.setImageBitmap(convert_byte_to_bitmap(art.getAvatar()));
+
         name.setText(art.getName());
         return convertView;
     }
+
+    public Bitmap convert_byte_to_bitmap(byte[] img) {
+        Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+        return bitmap;
+    }
+
+
 }

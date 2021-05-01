@@ -8,7 +8,9 @@
     tools:context=".Artist_info"
     android:orientation="vertical"
     android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp">
+    android:layout_marginRight="20dp"
+    android:focusable="false"
+    android:clickable="false">
 
     <TextView
         android:layout_width="match_parent"
@@ -36,11 +38,13 @@
         android:horizontalSpacing="10dp"
         android:numColumns="2"
         android:verticalSpacing="10dp"
+        android:focusable="true"
+        android:clickable="true"
         />
 
     <Button
         android:id="@+id/btn_add"
-        android:layout_width="50dp"
+        android:layout_width="46dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="@drawable/circle"

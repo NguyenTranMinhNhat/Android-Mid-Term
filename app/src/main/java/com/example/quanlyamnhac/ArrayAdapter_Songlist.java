@@ -1,6 +1,8 @@
 package com.example.quanlyamnhac;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +42,6 @@ public class ArrayAdapter_Songlist extends ArrayAdapter<Song> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource,null);
-        ImageView avatar = convertView.findViewById(R.id.avatar);
         TextView detail = convertView.findViewById(R.id.detail);
 
         Song song = data.get(position);
@@ -48,4 +49,6 @@ public class ArrayAdapter_Songlist extends ArrayAdapter<Song> {
         detail.setText(name_n_year);
         return convertView;
     }
+
+
 }
