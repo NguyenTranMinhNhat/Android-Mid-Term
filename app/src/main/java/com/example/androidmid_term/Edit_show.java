@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,9 +19,12 @@ public class Edit_show extends AppCompatActivity {
 
     ArrayList<ShowInfo> data;
     TextView tv_back;
-    ImageView imageSave;
-    ImageView imageTacGia;
-    TextView tenTacGia;
+    EditText songName;
+    EditText Time;
+    EditText place;
+    Button save;
+    Button cancel;
+    Button update;
     ListView info_show;
     DatabaseShowInfo db;
     private int maBd;
@@ -36,9 +41,12 @@ public class Edit_show extends AppCompatActivity {
 
     private void setConttrol() {
         tv_back = findViewById(R.id.tv_back_es);
-        imageSave = findViewById(R.id.imv_save_icon_es);
-        imageTacGia = findViewById(R.id.imv_tacGia_es);
-        tenTacGia = findViewById(R.id.tv_tenTacGia_es);
+        songName = findViewById(R.id.Et_tenBaiHat);
+        Time = findViewById(R.id.Et_thoiGian);
+        place = findViewById(R.id.Et_diaDiem);
+        save = findViewById(R.id.btn_save_es);
+        update = findViewById(R.id.btn_update_es);
+        cancel = findViewById(R.id.btn_cancel_es);
         info_show = findViewById(R.id.info_Show);
 
     }
@@ -54,7 +62,7 @@ public class Edit_show extends AppCompatActivity {
         info_show.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+
             }
         });
     }
