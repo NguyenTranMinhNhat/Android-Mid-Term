@@ -16,7 +16,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_back_es"
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/back"
@@ -40,7 +40,7 @@
             />
 
         <EditText
-            android:id="@+id/Et_tenBaiHat"
+            android:id="@+id/txt_song_name"
             android:layout_width="233dp"
             android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal"
@@ -66,7 +66,7 @@
             />
 
         <EditText
-            android:id="@+id/Et_thoiGian"
+            android:id="@+id/txt_date"
             android:layout_width="233dp"
             android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal"
@@ -92,7 +92,7 @@
             />
 
         <EditText
-            android:id="@+id/Et_diaDiem"
+            android:id="@+id/txt_place"
             android:layout_width="233dp"
             android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal"
@@ -107,33 +107,23 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <Button
-            android:id="@+id/btn_save_es"
+            android:id="@+id/btn_save"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:text="Save" />
 
         <Button
-            android:id="@+id/btn_update_es"
+            android:id="@+id/btn_update"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:text="Update" />
-
-        <Button
-            android:id="@+id/btn_cancel_es"
-            android:layout_width="112dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-            android:text="Cancel" />
     </LinearLayout>
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -148,7 +138,7 @@
             android:textColor="@color/black"/>
 
         <ListView
-            android:id="@+id/info_Show"
+            android:id="@+id/info_show"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/border_editext"

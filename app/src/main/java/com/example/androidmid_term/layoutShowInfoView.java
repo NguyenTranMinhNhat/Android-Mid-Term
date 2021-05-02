@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,7 @@ public class layoutShowInfoView extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(layoutShowInfoView.this,Edit_show.class);
                 intent.putExtra("id",id);
+                startActivity(intent);
             }
         });
     }

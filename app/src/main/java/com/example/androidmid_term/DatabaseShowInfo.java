@@ -111,6 +111,34 @@ public class DatabaseShowInfo extends SQLiteOpenHelper {
         }
         return art;
     }
+    public void insert_show_info(ShowInfo show){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO THONGTINBIEUDIEN VALUES(null,?,?,?,?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1,""+show.getMaCS());
+        statement.bindString(2,""+show.getMaBH());
+        statement.bindString(3,show.getNgayBD());
+        statement.bindString(4,show.getDiaDiem());
+
+        statement.executeInsert();
+
+    }
+
+    public void update_show_info(ShowInfo show){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "UPDATE THONGTINBIEUDIEN SET MABH=?, NGAYBD=?, DIADIEM=? WHERE MABD = "+show.getMaBD()+"";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1,""+show.getMaBH());
+        statement.bindString(2,show.getNgayBD());
+        statement.bindString(3,show.getDiaDiem());
+
+        statement.executeInsert();
+    }
+
     public ArrayList get_artist_list(){
         ArrayList <Artist> arr_artist = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
@@ -182,6 +210,10 @@ public class DatabaseShowInfo extends SQLiteOpenHelper {
         QuerryData(sql);
     }
 
+    public void del_show_info_by_id(int id){
+        String sql ="DELETE FROM THONGTINBIEUDIEN WHERE MABD = "+id+"";
+        QuerryData(sql);
+    }
     public void del_song_by_id(int id){
         String sql = "DELETE FROM BAIHAT WHERE MABH = "+id+"";
         QuerryData(sql);
