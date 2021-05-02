@@ -13,10 +13,9 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class ArrayAdapter_ShowInfo extends ArrayAdapter<ShowInfo> {
-
     Context context;
     int resource;
-    ArrayList<ShowInfo> data ;
+    ArrayList<ShowInfo> data;
 
     @NonNull
     @Override
@@ -26,13 +25,14 @@ public class ArrayAdapter_ShowInfo extends ArrayAdapter<ShowInfo> {
 
     @Override
     public int getCount() {
-        return super.getCount();
+        return data.size();
     }
 
-
-
-    public ArrayAdapter_ShowInfo(@NonNull Context context, int resource, ArrayList<ShowInfo> data) {
+    public ArrayAdapter_ShowInfo(@NonNull Context context, int resource, ArrayList data) {
         super(context, resource);
+        this.context = context;
+        this.resource = resource;
+        this.data = data;
     }
 
     @NonNull
@@ -40,8 +40,15 @@ public class ArrayAdapter_ShowInfo extends ArrayAdapter<ShowInfo> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
         TextView detail = convertView.findViewById(R.id.detail);
-        ShowInfo sf = data.get(position);
-        String name_t_P = sf.getMaBH() +"-" +sf.getNgayBD()+"-"+sf.getDiaDiem();
+
+        ShowInfo show = data.get(position);
+
+        String rs = "";
+        rs = rs + show.getMaBD();
+        rs = rs + " - " + show.getTenBH();
+        rs = rs + " - " + show.getNgayBD();
+        rs = rs + " - " + show.getDiaDiem();
+        detail.setText(rs);
         return convertView;
     }
 }

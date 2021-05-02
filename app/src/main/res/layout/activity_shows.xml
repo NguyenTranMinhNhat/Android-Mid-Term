@@ -8,8 +8,7 @@
     android:paddingLeft="20dp"
     android:paddingTop="10dp"
     android:paddingRight="20dp"
-    android:paddingBottom="20dp"
-    tools:context=".shows">
+    android:paddingBottom="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +16,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_back_s"
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/back"
@@ -30,8 +29,8 @@
             android:gravity="right">
 
             <ImageView
-                android:id="@+id/imv_caidat_icon_s"
-                android:layout_width="48dp"
+                android:id="@+id/img_setting"
+                android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:src="@drawable/caidat_icon" />
@@ -45,20 +44,20 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imv_tacGia_s"
+            android:id="@+id/img_tac_gia"
             android:layout_width="170dp"
-            android:layout_height="176dp"
+            android:layout_height="170dp"
             android:src="@drawable/binh" />
 
         <TextView
-            android:id="@+id/tv_tenTacGia_s"
+            android:id="@+id/txt_ten_tg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="Trịnh Thăng Bình"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="25dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,7 +81,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_ngay_s"
+                android:id="@+id/txt_date"
                 android:layout_width="324dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border_editext"
@@ -97,7 +96,7 @@
                 android:gravity="right">
 
                 <ImageView
-                    android:id="@+id/img_lich_s"
+                    android:id="@+id/img_calendar"
                     android:layout_width="43dp"
                     android:layout_height="43dp"
                     android:layout_gravity="center"
@@ -112,15 +111,12 @@
         android:layout_height="match_parent"
         android:layout_marginTop="20dp">
 
-        <EditText
-            android:id="@+id/et_danhMuc_s"
+        <ListView
+            android:id="@+id/info_Show"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
             android:background="@drawable/border_editext"
-            android:gravity="top"
-            android:hint="song"
-            android:textColor="@color/black"/>
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 

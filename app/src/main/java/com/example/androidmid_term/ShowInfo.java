@@ -1,12 +1,12 @@
 package com.example.androidmid_term;
 
 public class ShowInfo {
-    public int MaBD;
-    public int MaCS;
-    public int MaBH;
-    public String ngayBD;
-    public String diaDiem;
-
+    private int MaBD;
+    private int MaCS;
+    private int MaBH;
+    private String ngayBD;
+    private String diaDiem;
+    private String tenBH;
     public ShowInfo() {
     }
 
@@ -16,6 +16,14 @@ public class ShowInfo {
         MaBH = maBH;
         this.ngayBD = ngayBD;
         this.diaDiem = diaDiem;
+    }
+
+    public String getTenBH() {
+        return tenBH;
+    }
+
+    public void setTenBH(String tenBH) {
+        this.tenBH = tenBH;
     }
 
     public int getMaBD() {
