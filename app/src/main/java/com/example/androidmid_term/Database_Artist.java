@@ -66,13 +66,14 @@ public class Database_Artist extends SQLiteOpenHelper {
 
     public void insert_song_artist(Song song){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO BAIHAT VALUES(null,?,?,?)";
+        String sql = "INSERT INTO BAIHAT VALUES(null,?,?,?,?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
 
         statement.bindString(1,song.getName());
         statement.bindString(2,song.getYear());
         statement.bindString(3,""+song.getId_artist());
+        statement.bindString(4,""+song.getHas_sound());
 
         statement.executeInsert();
     }
@@ -117,6 +118,7 @@ public class Database_Artist extends SQLiteOpenHelper {
             song.setId(c.getInt(0));
             song.setName(c.getString(1));
             song.setYear(c.getString(2));
+            song.setHas_sound(c.getString(4));
             arr_song.add(song);
         }
         return arr_song;
@@ -144,6 +146,17 @@ public class Database_Artist extends SQLiteOpenHelper {
         statement.executeInsert();
     }
 
+    public void update_song_has_sound(Song song){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "UPDATE BAIHAT SET HAS_SOUND = ? WHERE MABH = "+song.getId()+"";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1,song.getHas_sound());
+
+        statement.executeInsert();
+    }
     public void del_perform_info_by_song_id(int id){
         String sql ="DELETE FROM THONGTINBIEUDIEN WHERE MABH = "+id+"";
         QuerryData(sql);
