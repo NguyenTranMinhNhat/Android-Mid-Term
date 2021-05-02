@@ -22,6 +22,7 @@ public class Artist_info extends AppCompatActivity {
     TextView btn_back;
     ImageView info_img;
     ImageView btn_setting;
+    ImageView btn_schedule;
     Database_Artist db;
     Artist artist;
     private int id;
@@ -61,6 +62,7 @@ public class Artist_info extends AppCompatActivity {
         info_img = findViewById(R.id.info_img);
         btn_back = findViewById(R.id.btn_back);
         btn_setting = findViewById(R.id.btn_setting);
+        btn_schedule = findViewById(R.id.btn_schedule);
     }
 
     private void setEvent() {
@@ -74,6 +76,14 @@ public class Artist_info extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Artist_info.this,EditArtist.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+        btn_schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Artist_info.this,layoutShowInfoView.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }

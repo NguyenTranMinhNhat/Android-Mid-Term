@@ -22,12 +22,14 @@ public class layoutShowInfoView extends AppCompatActivity {
     DatabaseShowInfo db;
     ArrayList <ShowInfo> data;
     ListView lst_info_show;
-    private int id =124;
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shows);
         db = new DatabaseShowInfo(this);
+        Intent intent = getIntent();
+        id = intent.getIntExtra("id",0);
         setControl();
         init();
         setEvent();
@@ -37,7 +39,9 @@ public class layoutShowInfoView extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(layoutShowInfoView.this,Artist_info.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
             }
         });
         img_setting.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +83,7 @@ public class layoutShowInfoView extends AppCompatActivity {
     }
 
     private void v_show_info(){
+
         data = db.get_show_info(id);
         ArrayAdapter_ShowInfo adapter = new ArrayAdapter_ShowInfo(this,R.layout.activity_layout_show_info_view,data);
         lst_info_show.setAdapter(adapter);
