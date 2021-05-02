@@ -42,7 +42,7 @@ public class ArrayAdapter_Songlist extends ArrayAdapter<Song> {
         TextView detail = convertView.findViewById(R.id.detail);
 
         Song song = data.get(position);
-        String name_n_year = song.getName() + " - " +song.getYear();
+        String name_n_year = song.getId() + " - "+ song.getName() + " - " +song.getYear()+" ------------- "+(song.getHas_sound().equals("1")?"ok":"miss audio");
         detail.setText(name_n_year);
         return convertView;
     }

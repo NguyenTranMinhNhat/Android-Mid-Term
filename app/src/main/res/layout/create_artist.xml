@@ -81,31 +81,4 @@
                 />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="25dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/v_song_list"
-            android:textSize="25dp"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-black"
-            android:textColor="@color/black"
-            android:layout_marginBottom="20dp"/>
-        <EditText
-            android:id="@+id/txt_song_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top"
-            android:hint="@string/input_song"
-            android:padding="10dp"
-            android:textSize="25dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:background="@drawable/border_edittext"
-            />
-    </LinearLayout>
 </LinearLayout>

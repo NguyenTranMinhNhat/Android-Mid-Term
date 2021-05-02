@@ -5,14 +5,24 @@ public class Song {
     private String name;
     private String year;
     private int id_artist;
+    private String has_sound;
 
-    public Song(String name, String year, int id_artist) {
+    public Song(String name, String year, int id_artist, String has_sound) {
         this.name = name;
         this.year = year;
         this.id_artist = id_artist;
+        this.has_sound = has_sound;
     }
 
     public Song() {
+    }
+
+    public String getHas_sound() {
+        return has_sound;
+    }
+
+    public void setHas_sound(String has_sound) {
+        this.has_sound = has_sound;
     }
 
     public String getName() {
