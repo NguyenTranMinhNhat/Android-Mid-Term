@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,5 +47,15 @@ public class Edit_show extends AppCompatActivity {
         data = db.getSHowInfo(maBd);
         ArrayAdapter_ShowInfo adapter = new ArrayAdapter_ShowInfo(this, R.layout.activity_layout_show_info_view, data);
         info_show.setAdapter(adapter);
+    }
+
+    private void setEvent()
+    {
+        info_show.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                
+            }
+        });
     }
 }
