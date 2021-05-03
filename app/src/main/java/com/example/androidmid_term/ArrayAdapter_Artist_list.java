@@ -94,6 +94,7 @@ public class ArrayAdapter_Artist_list extends ArrayAdapter<Artist> {
                         Artist a = new Artist();
                         a.setImg(filter_list.get(i).getImg());
                         a.setName(filter_list.get(i).getName());
+                        a.setId(filter_list.get(i).getId());
                         filters.add(a);
                     }
                 }

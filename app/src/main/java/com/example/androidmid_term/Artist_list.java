@@ -48,6 +48,8 @@ public class Artist_list extends AppCompatActivity {
     }
 
     private void setEvent() {
+        ArrayAdapter_Artist_list adapter = new ArrayAdapter_Artist_list(Artist_list.this, R.layout.activity_artis_list_item,data);
+        list_artist.setAdapter(adapter);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +82,18 @@ public class Artist_list extends AppCompatActivity {
                 //data = arr_artist;
                 ArrayAdapter_Artist_list adapter = new ArrayAdapter_Artist_list(Artist_list.this, R.layout.activity_artis_list_item,data);
                 list_artist.setAdapter(adapter);
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            public boolean onQueryTextSubmit(String text) {
+                adapter.getFilter().filter(text);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
             }
         });
     }
