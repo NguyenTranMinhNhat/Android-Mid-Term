@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,8 +20,10 @@ import java.util.ArrayList;
 public class layoutShowInfoView extends AppCompatActivity {
     ImageView img_artist;
     ImageView img_setting;
+    ImageView img_calendar;
     TextView txt_ten_tg;
     TextView btn_back;
+    EditText txt_date;
     DatabaseShowInfo db;
     ArrayList <ShowInfo> data;
     ListView lst_info_show;
@@ -55,14 +58,28 @@ public class layoutShowInfoView extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        img_calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowInfo show = new ShowInfo();
+                show.setMaCS(id);
+                show.setNgayBD(txt_date.getText().toString().trim());
+                ArrayList<ShowInfo> showInfo = db.find_show_info_by_date(show);
+
+                ArrayAdapter_ShowInfo adapter = new ArrayAdapter_ShowInfo(layoutShowInfoView.this,R.layout.activity_layout_show_info_view,showInfo);
+                lst_info_show.setAdapter(adapter);
+            }
+        });
     }
 
     private void setControl() {
         img_artist = findViewById(R.id.img_tac_gia);
         txt_ten_tg = findViewById(R.id.txt_ten_tg);
+        txt_date = findViewById(R.id.txt_date);
         btn_back = findViewById(R.id.btn_back);
         lst_info_show = findViewById(R.id.info_Show);
         img_setting = findViewById(R.id.img_setting);
+        img_calendar = findViewById(R.id.img_calendar);
     }
 
     private void v_get_artist(){
@@ -88,7 +105,6 @@ public class layoutShowInfoView extends AppCompatActivity {
     }
 
     private void v_show_info(){
-
         data = db.get_show_info(id);
         ArrayAdapter_ShowInfo adapter = new ArrayAdapter_ShowInfo(this,R.layout.activity_layout_show_info_view,data);
         lst_info_show.setAdapter(adapter);

@@ -157,6 +157,36 @@ public class Database_Artist extends SQLiteOpenHelper {
 
         statement.executeInsert();
     }
+    public ArrayList get_rank_artist_by_date(String date){
+        ArrayList <Artist> arr_artist = new ArrayList<>();
+        String sql = "SELECT cs.*,count(ttbd.MACS) as count FROM THONGTINBIEUDIEN ttbd\n" +
+                "INNER JOIN CASI cs on cs.MACS = ttbd.MACS\n" +
+                "WHERE ttbd.NGAYBD like '%"+date+"%'\n" +
+                "GROUP BY ttbd.MACS\n" +
+                "ORDER BY count DESC";
+        Cursor c = getData(sql);
+
+        while (c.moveToNext()){
+            Artist art = new Artist();
+            if(arr_artist.size()==0){
+                art.setName(arr_artist.size()+1+"st - "+c.getString(1)+"\n"+c.getString(3)+" shows");
+            }
+            else if(arr_artist.size()==1){
+                art.setName(arr_artist.size()+1+"nd - "+c.getString(1)+"\n"+c.getString(3)+" shows");
+            }
+            else if(arr_artist.size()==2){
+                art.setName(arr_artist.size()+1+"rd - "+c.getString(1)+"\n"+c.getString(3)+" shows");
+            }
+            else {
+                art.setName(arr_artist.size()+1+"th - "+c.getString(1)+"\n"+c.getString(3)+" shows");
+            }
+            art.setId(c.getInt(0));
+            art.setImg(c.getBlob(2));
+            arr_artist.add(art);
+        }
+
+        return arr_artist;
+    }
     public void del_perform_info_by_song_id(int id){
         String sql ="DELETE FROM THONGTINBIEUDIEN WHERE MABH = "+id+"";
         QuerryData(sql);

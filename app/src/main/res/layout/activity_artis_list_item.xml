@@ -10,9 +10,9 @@
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="176dp"
-        android:layout_height="162dp"
+        android:layout_height="176dp"
         android:layout_gravity="center"
-        android:background="@drawable/border_edittext" />
+        />
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"

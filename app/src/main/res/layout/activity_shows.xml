@@ -84,12 +84,12 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
                 android:id="@+id/txt_date"
                 android:layout_width="324dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/border_editext"
-                android:hint="07/05/1999"
+                android:hint="dd/mm/yyyy"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
