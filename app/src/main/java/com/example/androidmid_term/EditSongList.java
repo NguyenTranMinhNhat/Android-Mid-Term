@@ -50,7 +50,7 @@ public class EditSongList extends AppCompatActivity {
 
     private void init() {
         data = db.get_song(id);
-        ArrayAdapter_Songlist adapter = new ArrayAdapter_Songlist(this, R.layout.song_list, data);
+        ArrayAdapter_Songlist adapter = new ArrayAdapter_Songlist(this, R.layout.activity_song_list_item, data);
         info_songlist.setAdapter(adapter);
     }
 

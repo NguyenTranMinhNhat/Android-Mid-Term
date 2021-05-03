@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class Artist_info extends AppCompatActivity {
     ImageView btn_schedule;
     Database_Artist db;
     Artist artist;
+    Animation animation;
     private int id;
 
     @Override
@@ -42,6 +45,8 @@ public class Artist_info extends AppCompatActivity {
     }
 
     private void init() {
+        animation = AnimationUtils.loadAnimation(this,R.anim.disk_rotate);
+        btn_setting.startAnimation(animation);
         artist = db.get_artist(id);
         info_name.setText(artist.getName());
         if(artist.getImg()==null){

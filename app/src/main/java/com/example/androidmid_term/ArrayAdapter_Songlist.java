@@ -40,10 +40,12 @@ public class ArrayAdapter_Songlist extends ArrayAdapter<Song> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource,null);
         TextView detail = convertView.findViewById(R.id.detail);
-
+        TextView check_sound = convertView.findViewById(R.id.txt_check_sound);
         Song song = data.get(position);
-        String name_n_year = song.getId() + " - "+ song.getName() + " - " +song.getYear()+" ------------- "+(song.getHas_sound().equals("1")?"ok":"miss audio");
+        String name_n_year = song.getId() + " - "+ song.getName() + " - " +song.getYear();
         detail.setText(name_n_year);
+        String check = song.getHas_sound().equals("1")?"✓":"x";
+        check_sound.setText(check);
         return convertView;
     }
 }

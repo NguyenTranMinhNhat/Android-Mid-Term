@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ public class layoutShowInfoView extends AppCompatActivity {
     ArrayList <ShowInfo> data;
     ListView lst_info_show;
     private int id;
+    Animation animation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +78,8 @@ public class layoutShowInfoView extends AppCompatActivity {
     private void init() {
         v_get_artist();
         v_show_info();
+        animation = AnimationUtils.loadAnimation(this,R.anim.disk_rotate);
+        img_setting.startAnimation(animation);
     }
 
     public Bitmap convert_byte_to_bitmap(byte[] img) {

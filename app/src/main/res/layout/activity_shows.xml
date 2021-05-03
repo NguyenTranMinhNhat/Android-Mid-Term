@@ -19,9 +19,12 @@
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-black"
             android:text="@string/back"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,8 +48,8 @@
 
         <ImageView
             android:id="@+id/img_tac_gia"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:src="@drawable/binh" />
 
         <TextView
@@ -54,6 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:text="Trịnh Thăng Bình"
             android:textColor="@color/black"
