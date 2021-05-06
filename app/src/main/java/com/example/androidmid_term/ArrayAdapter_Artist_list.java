@@ -85,7 +85,7 @@ public class ArrayAdapter_Artist_list extends ArrayAdapter<Artist> {
             FilterResults results = new FilterResults();
             if(constraint != null && constraint.length() > 0){
                 // Constrain to upper
-                constraint = constraint.toString().toUpperCase();
+                constraint = constraint.toString();
                 ArrayList<Artist> filters = new ArrayList<>();
 
                 // get specific item

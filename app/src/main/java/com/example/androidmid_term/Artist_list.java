@@ -60,8 +60,11 @@ public class Artist_list extends AppCompatActivity {
         list_artist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ArrayList<Artist> filter_list;
+                filter_list = adapter.getFilterList();
+                Artist artist_info = filter_list.get(position);
                 Intent intent = new Intent(Artist_list.this,Artist_info.class);
-                intent.putExtra("id",data.get(position).getId());
+                intent.putExtra("id",artist_info.getId());
                 startActivity(intent);
             }
         });
@@ -79,9 +82,9 @@ public class Artist_list extends AppCompatActivity {
             public void onClick(View v) {
                 String date = txt_rank_date.getText().toString().trim();
                 data= db.get_rank_artist_by_date(date);
-                //data = arr_artist;
                 ArrayAdapter_Artist_list adapter = new ArrayAdapter_Artist_list(Artist_list.this, R.layout.activity_artis_list_item,data);
                 list_artist.setAdapter(adapter);
+                
             }
         });
 
