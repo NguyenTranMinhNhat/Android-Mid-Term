@@ -21,6 +21,7 @@ public class Artist_list extends AppCompatActivity {
     GridView list_artist;
     Button add;
     Button btn_get_rank;
+    Button btn_reset;
     EditText txt_rank_date;
     SearchView searchView;
     @Override
@@ -45,6 +46,7 @@ public class Artist_list extends AppCompatActivity {
         btn_get_rank = findViewById(R.id.btn_get_rank);
         txt_rank_date = findViewById(R.id.txt_date_rank);
         searchView = findViewById(R.id.search);
+        btn_reset = findViewById(R.id.btn_reset);
     }
 
     private void setEvent() {
@@ -84,7 +86,6 @@ public class Artist_list extends AppCompatActivity {
                 data= db.get_rank_artist_by_date(date);
                 ArrayAdapter_Artist_list adapter = new ArrayAdapter_Artist_list(Artist_list.this, R.layout.activity_artis_list_item,data);
                 list_artist.setAdapter(adapter);
-                
             }
         });
 
@@ -97,6 +98,12 @@ public class Artist_list extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
                 return false;
+            }
+        });
+        btn_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setEvent();
             }
         });
     }
