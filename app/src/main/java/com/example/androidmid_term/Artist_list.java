@@ -3,17 +3,21 @@ package com.example.androidmid_term;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.SearchView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Artist_list extends AppCompatActivity {
     Database_Artist db;
@@ -58,7 +62,6 @@ public class Artist_list extends AppCompatActivity {
                 startActivity(new Intent(Artist_list.this,CreateArtist.class));
             }
         });
-
         list_artist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,7 +73,6 @@ public class Artist_list extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         list_artist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -78,7 +80,6 @@ public class Artist_list extends AppCompatActivity {
                 return false;
             }
         });
-
         btn_get_rank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,9 +87,9 @@ public class Artist_list extends AppCompatActivity {
                 data= db.get_rank_artist_by_date(date);
                 ArrayAdapter_Artist_list adapter = new ArrayAdapter_Artist_list(Artist_list.this, R.layout.activity_artis_list_item,data);
                 list_artist.setAdapter(adapter);
+                setEvent();
             }
         });
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             public boolean onQueryTextSubmit(String text) {
                 adapter.getFilter().filter(text);
@@ -103,11 +104,17 @@ public class Artist_list extends AppCompatActivity {
         btn_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                init();
                 setEvent();
             }
         });
+        txt_rank_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectDay();
+            }
+        });
     }
-
     private void del_confirm(int position){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Warning !!!");
@@ -123,14 +130,27 @@ public class Artist_list extends AppCompatActivity {
                 init();
             }
         });
-
         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 return;
             }
         });
-
         alert.show();
+    }
+    public void selectDay(){
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DATE);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(year,month,dayOfMonth);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                txt_rank_date.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        },year,month,day);
+        datePickerDialog.show();
     }
 }

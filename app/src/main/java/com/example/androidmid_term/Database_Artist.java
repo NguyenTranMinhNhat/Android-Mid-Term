@@ -89,8 +89,10 @@ public class Database_Artist extends SQLiteOpenHelper {
             art.setName(c.getString(1));
             art.setImg(c.getBlob(2));
         }
+
         return art;
     }
+
     public ArrayList get_artist_list(){
         ArrayList <Artist> arr_artist = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
@@ -133,15 +135,25 @@ public class Database_Artist extends SQLiteOpenHelper {
         }
         return id;
     }
+    public int get_song_id_by_name_different(String name,int id){
+        String sql = "SELECT MABH FROM BAIHAT WHERE TENBH = '"+name+"' AND MABH != "+id+" ";
+        Cursor c = getData(sql);
 
+        int id_=0;
+        while (c.moveToNext()){
+            id_ = c.getInt(0);
+        }
+        return id_;
+    }
     public void update_song_by_id(Song song){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE BAIHAT SET NAMST = ? WHERE MABH = "+song.getId()+"";
+        String sql = "UPDATE BAIHAT SET NAMST = ?, TENBH =? WHERE MABH = "+song.getId()+"";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
 
         statement.bindString(1,song.getYear());
+        statement.bindString(2,song.getName());
 
         statement.executeInsert();
     }

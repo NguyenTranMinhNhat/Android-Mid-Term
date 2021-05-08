@@ -35,7 +35,7 @@ public class EditSongList extends AppCompatActivity {
     TextView btn_back;
     ListView info_songlist;
     private int id;
-
+    private int id_bh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,16 +94,15 @@ public class EditSongList extends AppCompatActivity {
             public void onClick(View v) {
                 String name= txt_song_name.getText().toString().trim();
                 String year = txt_song_year.getText().toString().trim();
-                int id =0;
-                id = db.get_song_id_by_name(name);
 
-                if(id==0){
-                    Toast.makeText(EditSongList.this, "Please add this song before edit", Toast.LENGTH_SHORT).show();
+                if(db.get_song_id_by_name_different(name,id_bh)!=0){
+                    Toast.makeText(EditSongList.this, "This song name is existed", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 Song song = new Song();
-                song.setId(id);
+                song.setId(id_bh);
+                song.setName(name);
                 song.setYear(year);
                 db.update_song_by_id(song);
 
@@ -133,6 +132,7 @@ public class EditSongList extends AppCompatActivity {
         info_songlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                id_bh = data.get(position).getId();
                 txt_song_name.setText(data.get(position).getName());
                 txt_song_year.setText(data.get(position).getYear());
             }

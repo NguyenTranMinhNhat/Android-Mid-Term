@@ -2,6 +2,7 @@ package com.example.androidmid_term;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,13 +10,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class layoutShowInfoView extends AppCompatActivity {
     ImageView img_artist;
@@ -42,6 +46,12 @@ public class layoutShowInfoView extends AppCompatActivity {
     }
 
     private void setEvent() {
+        txt_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectDay();
+            }
+        });
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,5 +118,20 @@ public class layoutShowInfoView extends AppCompatActivity {
         data = db.get_show_info(id);
         ArrayAdapter_ShowInfo adapter = new ArrayAdapter_ShowInfo(this,R.layout.activity_layout_show_info_view,data);
         lst_info_show.setAdapter(adapter);
+    }
+    public void selectDay(){
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DATE);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(year,month,dayOfMonth);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                txt_date.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        },year,month,day);
+        datePickerDialog.show();
     }
 }
