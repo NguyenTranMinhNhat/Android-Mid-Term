@@ -52,6 +52,15 @@ public class Database_Artist extends SQLiteOpenHelper {
 
         statement.execute();
     }
+    public int check_artist_name_distinct(Artist at){
+        String sql ="SELECT * FROM CASI WHERE TENCS = '"+at.getName()+"' AND MACS != "+at.getId();
+        Cursor c = getData(sql);
+        int id=0;
+        while (c.moveToNext()){
+            id = c.getInt(0);
+        }
+        return id;
+    }
     public int get_last_id(){
         SQLiteDatabase database = getReadableDatabase();
         String sql ="SELECT MACS FROM CASI ORDER BY MACS DESC LIMIT 1;";

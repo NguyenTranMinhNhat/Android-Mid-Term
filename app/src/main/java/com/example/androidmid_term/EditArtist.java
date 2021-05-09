@@ -80,10 +80,14 @@ public class EditArtist extends AppCompatActivity {
         String name_artist = txt_artist_name.getText().toString().trim();
         at = new Artist();
         byte[] img = convert_img_view_to_byte();
+        at.setId(id);
         at.setName(name_artist);
         at.setImg(img);
-        db.update_artist(at,id);
-        Toast.makeText(EditArtist.this, "Save Artist", Toast.LENGTH_SHORT).show();
+        if(db.check_artist_name_distinct(at)==0) {
+            db.update_artist(at, id);
+            Toast.makeText(EditArtist.this, "Save Artist", Toast.LENGTH_SHORT).show();
+        }
+        else Toast.makeText(this, "This artist name existed", Toast.LENGTH_SHORT).show();
     }
 
     public byte[] convert_img_view_to_byte() {

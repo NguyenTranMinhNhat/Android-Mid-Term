@@ -70,7 +70,7 @@ public class Edit_show extends AppCompatActivity {
                 String date = txt_date.getText().toString().trim();
                 String place = txt_place.getText().toString().trim();
 
-                int id_song = db.get_song_id_by_name(song_name);
+                int id_song = db.get_song_id_by_name(song_name,id);
                 if(id_song==0){
                     Toast.makeText(Edit_show.this, "This song not exist", Toast.LENGTH_SHORT).show();
                     return;
@@ -80,7 +80,10 @@ public class Edit_show extends AppCompatActivity {
                 show.setDiaDiem(place);
                 show.setNgayBD(date);
 
-                db.insert_show_info(show);
+                if (db.check_show_info_distinct(show) == 0) {
+                    db.insert_show_info(show);
+                }
+                else Toast.makeText(Edit_show.this, "This show info existed", Toast.LENGTH_SHORT).show();
 
                 init();
             }
@@ -110,7 +113,7 @@ public class Edit_show extends AppCompatActivity {
 
                 ShowInfo show = new ShowInfo();
 
-                int id_song = db.get_song_id_by_name(song_name);
+                int id_song = db.get_song_id_by_name(song_name,id);
                 if(id_song==0){
                     Toast.makeText(Edit_show.this, "This song not exist", Toast.LENGTH_SHORT).show();
                     return;
@@ -126,7 +129,6 @@ public class Edit_show extends AppCompatActivity {
                 init();
             }
         });
-
         info_show.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

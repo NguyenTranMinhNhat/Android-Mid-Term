@@ -85,10 +85,19 @@ public class DatabaseShowInfo extends SQLiteOpenHelper {
 
         statement.executeInsert();
     }
-    public int get_song_id_by_name(String name){
-        String sql = "SELECT MABH FROM BAIHAT WHERE TENBH = '"+name+"'";
+    public int get_song_id_by_name(String name,int id){
+        String sql = "SELECT MABH FROM BAIHAT WHERE TENBH = '"+name+"' AND MACS = "+id;
         Cursor c = getData(sql);
 
+        int id_=0;
+        while (c.moveToNext()){
+            id_ = c.getInt(0);
+        }
+        return id_;
+    }
+    public int check_show_info_distinct(ShowInfo show){
+        String sql ="SELECT MABD FROM THONGTINBIEUDIEN WHERE MABH = "+show.getMaBH()+" AND NGAYBD = '"+show.getNgayBD()+"' AND DIADIEM = '"+show.getDiaDiem()+"'";
+        Cursor c = getData(sql);
         int id=0;
         while (c.moveToNext()){
             id = c.getInt(0);
@@ -117,6 +126,9 @@ public class DatabaseShowInfo extends SQLiteOpenHelper {
 
         return arr_show;
     }
+//    public int check_song_show_info(ShowInfo show){
+//        String sql = "SELECT MABD FROM BAIHAT WHERE MACS "
+//    }
     @Override
     public void onCreate(SQLiteDatabase db) {
 
