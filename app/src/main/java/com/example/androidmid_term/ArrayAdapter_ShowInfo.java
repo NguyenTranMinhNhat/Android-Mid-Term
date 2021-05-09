@@ -40,15 +40,15 @@ public class ArrayAdapter_ShowInfo extends ArrayAdapter<ShowInfo> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
         TextView detail = convertView.findViewById(R.id.detail);
+        TextView txt_place = convertView.findViewById(R.id.txt_place);
+        TextView txt_date = convertView.findViewById(R.id.txt_date);
 
         ShowInfo show = data.get(position);
 
-        String rs = "";
-        rs = rs + show.getMaBD();
-        rs = rs + " - " + show.getTenBH();
-        rs = rs + " - " + show.getNgayBD();
-        rs = rs + " - " + show.getDiaDiem();
-        detail.setText(rs);
+        detail.setText(show.getTenBH());
+        txt_place.setText(show.getDiaDiem());
+        txt_date.setText(show.getNgayBD());
+
         return convertView;
     }
 }

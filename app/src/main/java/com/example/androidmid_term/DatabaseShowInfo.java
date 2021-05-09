@@ -104,6 +104,15 @@ public class DatabaseShowInfo extends SQLiteOpenHelper {
         }
         return id;
     }
+    public int check_show_info_distinct_by_id(ShowInfo show){
+        String sql ="SELECT MABD FROM THONGTINBIEUDIEN WHERE MABH = "+show.getMaBH()+" AND NGAYBD = '"+show.getNgayBD()+"' AND DIADIEM = '"+show.getDiaDiem()+"' AND MABD != "+show.getMaBD();
+        Cursor c = getData(sql);
+        int id=0;
+        while (c.moveToNext()){
+            id = c.getInt(0);
+        }
+        return id;
+    }
     public void del_show_info_by_id(int id){
         String sql ="DELETE FROM THONGTINBIEUDIEN WHERE MABD = "+id+"";
         QuerryData(sql);

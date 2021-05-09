@@ -123,9 +123,10 @@ public class Edit_show extends AppCompatActivity {
                 show.setMaBH(id_song);
                 show.setDiaDiem(place);
                 show.setNgayBD(date);
-
-                db.update_show_info(show);
-
+                if (db.check_show_info_distinct_by_id(show) == 0) {
+                    db.update_show_info(show);
+                }
+                else Toast.makeText(Edit_show.this, "This show info existed", Toast.LENGTH_SHORT).show();
                 init();
             }
         });

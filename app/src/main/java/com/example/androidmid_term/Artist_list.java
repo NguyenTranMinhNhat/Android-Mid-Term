@@ -76,7 +76,10 @@ public class Artist_list extends AppCompatActivity {
         list_artist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                del_confirm(position);
+                ArrayList<Artist> filter_list;
+                filter_list = adapter.getFilterList();
+                Artist artist_info = filter_list.get(position);
+                del_confirm(artist_info.getId());
                 return false;
             }
         });
@@ -115,12 +118,12 @@ public class Artist_list extends AppCompatActivity {
             }
         });
     }
-    private void del_confirm(int position){
+    private void del_confirm(int id){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Warning !!!");
-        alert.setMessage("Do you want to delete this artist and all of song and perform's info belong to this ???");
+        Artist at = db.get_artist(id);
+        alert.setMessage("Do you want to delete "+at.getName()+" and all of song and perform's info belong to this ???");
 
-        int id = data.get(position).getId();
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

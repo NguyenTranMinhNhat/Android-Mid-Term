@@ -6,6 +6,7 @@ public class Song {
     private String year;
     private int id_artist;
     private String has_sound;
+    private String artist_name;
 
     public Song(String name, String year, int id_artist, String has_sound) {
         this.name = name;
@@ -15,6 +16,14 @@ public class Song {
     }
 
     public Song() {
+    }
+
+    public String getArtist_name() {
+        return artist_name;
+    }
+
+    public void setArtist_name(String artist_name) {
+        this.artist_name = artist_name;
     }
 
     public String getHas_sound() {

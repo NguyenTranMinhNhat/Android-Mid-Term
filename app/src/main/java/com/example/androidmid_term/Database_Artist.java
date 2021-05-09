@@ -121,7 +121,9 @@ public class Database_Artist extends SQLiteOpenHelper {
     public ArrayList get_song(int id){
         ArrayList <Song> arr_song = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
-        String sql = "SELECT * FROM BAIHAT WHERE MACS = "+id+"";
+        String sql = "SELECT BAIHAT.MABH,BAIHAT.TENBH,BAIHAT.NAMST,BAIHAT.MACS,BAIHAT.HAS_SOUND,CASI.TENCS FROM BAIHAT " +
+                        "INNER JOIN CASI ON CASI.MACS = BAIHAT.MACS "+
+                        " WHERE BAIHAT.MACS = "+id+"";
 
         Cursor c = database.rawQuery(sql,null);
         while (c.moveToNext()){
@@ -130,6 +132,7 @@ public class Database_Artist extends SQLiteOpenHelper {
             song.setName(c.getString(1));
             song.setYear(c.getString(2));
             song.setHas_sound(c.getString(4));
+            song.setArtist_name(c.getString(5));
             arr_song.add(song);
         }
         return arr_song;

@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EditSongList extends AppCompatActivity {
     ArrayList<Song> data;
@@ -78,7 +79,12 @@ public class EditSongList extends AppCompatActivity {
             public void onClick(View v) {
                 Song song = new Song();
                 song.setName(txt_song_name.getText().toString().trim());
-                song.setYear(txt_song_year.getText().toString().trim());
+                String year = txt_song_year.getText().toString().trim();
+                if(validate_year(year)==""){
+                    Toast.makeText(EditSongList.this, "Year is invalid", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                song.setYear(year);
                 song.setId_artist(id);
                 song.setHas_sound("0");
                 if(db.get_song_id_by_name(txt_song_name.getText().toString().trim())==0){
@@ -94,6 +100,10 @@ public class EditSongList extends AppCompatActivity {
             public void onClick(View v) {
                 String name= txt_song_name.getText().toString().trim();
                 String year = txt_song_year.getText().toString().trim();
+                if(validate_year(year)==""){
+                    Toast.makeText(EditSongList.this, "Year is invalid", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if(db.get_song_id_by_name_different(name,id_bh)!=0){
                     Toast.makeText(EditSongList.this, "This song name is existed", Toast.LENGTH_SHORT).show();
@@ -169,5 +179,24 @@ public class EditSongList extends AppCompatActivity {
         });
 
         alert.show();
+    }
+    private String validate_year(String year){
+        String year_1="";
+        Date d = new Date();
+        int year_2 = d.getYear();
+        int current_year = year_2 + 1900;
+        try{
+            int year_num = Integer.parseInt(year);
+            if(year_num/1000 <= 0 || year_num/1000 >=10){
+                return year_1;
+            }
+            if(year_num>current_year){
+                return year_1;
+            }
+            year_1 = year;
+        }catch (Exception e){
+            return year_1;
+        }
+        return year_1;
     }
 }
